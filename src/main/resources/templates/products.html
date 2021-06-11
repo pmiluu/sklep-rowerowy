@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sklep rowerowy</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet"  href="/css/style.css">
+</head>
+<body>
+<div class="topnav">
+    <a th:href="@{/}">Strona główna</a>
+    <a class="active" th:href="@{/shop/}">Sklep</a>
+    <a href="">Nowości</a>
+    <a href="">Kontakt</a>
+</div>
+<div th:if="${ not#lists.isEmpty(products)}">
+    <form action="#" th:action="@{/products}" method="post">
+    <table>
+        <tr>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Ilość</th>
+            <th></th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.productName}"></td>
+            <td th:text="${product.price}"></td>
+            <td><input type="number" /></td>
+            <td><button type="button">Dodaj</button></td>
+        </tr>
+        </table>
+        <p><input type="submit" value="Podsumowanie" /></p>
+    </form>
+</div>
+</body>
+</html>
