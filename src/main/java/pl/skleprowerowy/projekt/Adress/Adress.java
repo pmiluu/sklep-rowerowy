@@ -1,6 +1,6 @@
 package pl.skleprowerowy.projekt.Adress;
 
-import com.sun.istack.NotNull;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +8,7 @@ import lombok.Setter;
 import pl.skleprowerowy.projekt.Person.Person;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Getter @Setter
@@ -19,6 +20,7 @@ public class Adress {
     private Long id;
 
     @OneToOne(mappedBy = "adress")
+    @JsonBackReference
     private Person person;
 
     @NotNull

@@ -1,5 +1,6 @@
 package pl.skleprowerowy.projekt.Person;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +22,7 @@ public class Person {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "adress_id", referencedColumnName = "id")
+    @JsonManagedReference
     private Adress adress;
 
     @NotNull
