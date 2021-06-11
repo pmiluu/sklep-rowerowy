@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.skleprowerowy.projekt.Adress.Adress;
 import pl.skleprowerowy.projekt.Orders.Orders;
+import pl.skleprowerowy.projekt.Rental.Rental;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -33,6 +34,10 @@ public class Person {
     @OneToMany(mappedBy = "person")
     @JsonManagedReference
     private Set<Orders> orders = new HashSet<Orders>();
+
+    @OneToMany(mappedBy = "person")
+    @JsonManagedReference
+    private Set<Rental> rentals = new HashSet<Rental>();
 
     @NotNull
     private String firstName;

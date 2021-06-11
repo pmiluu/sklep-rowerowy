@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.skleprowerowy.projekt.Opinion.Opinion;
 import pl.skleprowerowy.projekt.Product.Product;
+import pl.skleprowerowy.projekt.ProductOrder.ProductOrder;
+import pl.skleprowerowy.projekt.Rental.Rental;
 import pl.skleprowerowy.projekt.Repair.Repair;
 
 import javax.persistence.DiscriminatorValue;
@@ -30,5 +32,9 @@ public class Bike extends Product {
     @OneToMany(mappedBy = "bike")
     @JsonManagedReference
     private Set<Repair> repairs = new HashSet<Repair>();
+
+    @OneToMany(mappedBy = "bike")
+    @JsonManagedReference
+    private Set<Rental> rentals = new HashSet<Rental>();
 
 }
