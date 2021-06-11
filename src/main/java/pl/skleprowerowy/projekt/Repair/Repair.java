@@ -1,8 +1,10 @@
 package pl.skleprowerowy.projekt.Repair;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.skleprowerowy.projekt.Mechanic.Mechanic;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -16,6 +18,12 @@ public class Repair {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "mechanic_id")
+    @JsonBackReference
+    private Mechanic mechanic;
 
     @NotNull
     private LocalDate startDate;
