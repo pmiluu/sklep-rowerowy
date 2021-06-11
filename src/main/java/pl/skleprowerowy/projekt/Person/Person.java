@@ -18,6 +18,8 @@ import java.util.Set;
 @Entity
 @Getter @Setter
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "employeeType", discriminatorType = DiscriminatorType.STRING)
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

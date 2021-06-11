@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.skleprowerowy.projekt.Person.Person;
+import pl.skleprowerowy.projekt.Seller.Seller;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -23,9 +24,14 @@ public class Orders {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "person_id")
-
     @JsonBackReference
     private Person person;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    @JsonBackReference
+    private Seller seller;
 
     @NotNull
     private LocalDate orderDate;
