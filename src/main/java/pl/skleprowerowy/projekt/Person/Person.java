@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.skleprowerowy.projekt.Adress.Adress;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,9 @@ public class Person {
 
     @NotNull
     private LocalDate birthDate;
+
+    @NotNull
+    private Adress adress;
 
     private EnumSet<PersonType> types = EnumSet.of(PersonType.Person);
 
