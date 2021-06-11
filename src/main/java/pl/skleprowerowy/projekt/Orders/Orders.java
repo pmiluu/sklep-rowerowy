@@ -6,11 +6,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.skleprowerowy.projekt.Person.Person;
+import pl.skleprowerowy.projekt.ProductOrder.ProductOrder;
 import pl.skleprowerowy.projekt.Seller.Seller;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -32,6 +35,10 @@ public class Orders {
     @JoinColumn(name = "seller_id")
     @JsonBackReference
     private Seller seller;
+
+    @OneToMany(mappedBy = "orders")
+    @JsonManagedReference
+    private Set<ProductOrder> productOrders = new HashSet<ProductOrder>();
 
     @NotNull
     private LocalDate orderDate;
