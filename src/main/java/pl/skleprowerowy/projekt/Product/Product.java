@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.skleprowerowy.projekt.Opinion.Opinion;
 import pl.skleprowerowy.projekt.ProductOrder.ProductOrder;
 
 import javax.persistence.*;
@@ -23,6 +24,10 @@ public class Product {
     @OneToMany(mappedBy = "product")
     @JsonManagedReference
     private Set<ProductOrder> productOrders = new HashSet<ProductOrder>();
+
+    @OneToMany(mappedBy = "product")
+    @JsonManagedReference
+    private Set<Opinion> opinions = new HashSet<Opinion>();
 
     @NotNull
     private String productName;
