@@ -1,16 +1,19 @@
 package pl.skleprowerowy.projekt.Person;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.skleprowerowy.projekt.Adress.Adress;
+import pl.skleprowerowy.projekt.Orders.Orders;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter @Setter
@@ -24,6 +27,10 @@ public class Person {
     @JoinColumn(name = "adress_id", referencedColumnName = "id")
     @JsonManagedReference
     private Adress adress;
+
+    @OneToMany(mappedBy = "person")
+    @JsonManagedReference
+    private Set<Orders> orders = new HashSet<Orders>();
 
     @NotNull
     private String firstName;
@@ -51,7 +58,7 @@ public class Person {
     @Column(nullable = true)
     private Double salary;
 
-    private int getAge(){
+    public int getAge(){
         int age = Period.between(birthDate,LocalDate.now()).getYears();
         return age;
     }

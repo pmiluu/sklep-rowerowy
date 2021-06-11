@@ -1,9 +1,13 @@
 package pl.skleprowerowy.projekt.Person;
 
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.skleprowerowy.projekt.Adress.Adress;
+import pl.skleprowerowy.projekt.Orders.OrderRepository;
+import pl.skleprowerowy.projekt.Orders.OrderStatus;
+import pl.skleprowerowy.projekt.Orders.Orders;
 
 import java.time.LocalDate;
 
@@ -12,6 +16,8 @@ import java.time.LocalDate;
 public class PersonController {
     @Autowired
     private PersonRepository personRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
     @PostMapping(path = "/add")
     public @ResponseBody String addNewPerson(@RequestParam String firstName, @RequestParam String lastName,
@@ -30,8 +36,18 @@ public class PersonController {
         a.setZipCode("11-121");
 
         p.setAdress(a);
-
         personRepository.save(p);
+
+
+        Orders o = new Orders();
+        o.setOrderDate(LocalDate.now());
+        o.setOrderStatus(OrderStatus.SENT);
+        o.setPerson(p);
+        orderRepository.save(o);
+
+
+
+
         return "Saved";
     }
 
