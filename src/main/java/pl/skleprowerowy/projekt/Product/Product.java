@@ -16,6 +16,8 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "productType", discriminatorType = DiscriminatorType.STRING)
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
