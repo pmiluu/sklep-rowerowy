@@ -1,15 +1,12 @@
 package pl.skleprowerowy.projekt.Person;
 
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.skleprowerowy.projekt.Adress.Adress;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.EnumSet;
@@ -21,6 +18,10 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "adress_id", referencedColumnName = "id")
+    private Adress adress;
 
     @NotNull
     private String firstName;
@@ -34,20 +35,19 @@ public class Person {
     @NotNull
     private LocalDate birthDate;
 
-    @NotNull
-    private Adress adress;
-
-    private EnumSet<PersonType> types = EnumSet.of(PersonType.Person);
+    private PersonType personType = PersonType.Person;
 
     private String password;
 
     private String email;
 
-    private int discount;
+    @Column(nullable = true)
+    private Integer discount;
 
     private String personalId;
 
-    private double salary;
+    @Column(nullable = true)
+    private Double salary;
 
     private int getAge(){
         int age = Period.between(birthDate,LocalDate.now()).getYears();
