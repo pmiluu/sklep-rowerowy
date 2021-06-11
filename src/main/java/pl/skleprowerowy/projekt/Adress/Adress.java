@@ -32,8 +32,8 @@ public class Adress {
     @NotNull
     private int houseNumber;
 
-    @NotNull
-    private int apartmentNumber;
+    @Column(nullable = true)
+    private Integer apartmentNumber;
 
     @NotNull
     private String City;
