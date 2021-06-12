@@ -7,12 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
+import pl.skleprowerowy.projekt.Product.Product;
 import pl.skleprowerowy.projekt.Product.ProductRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(path = "/shop")
@@ -30,7 +32,6 @@ public class OrderController {
 
     @PostMapping("/")
     public String basket(@ModelAttribute("productInfo") ProductInfo productInfo, HttpServletRequest request) {
-        System.out.println(productInfo.getProductName());
         @SuppressWarnings("unchecked")
         List<ProductInfo> basket = (List<ProductInfo>) request.getSession().getAttribute("BASKET");
         if(basket ==null){
@@ -49,6 +50,7 @@ public class OrderController {
         if(basket == null){
             basket = new ArrayList<>();
         }
+
         model.addAttribute("products",basket);
         return "basket";
     }

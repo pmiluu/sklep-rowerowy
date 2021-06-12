@@ -17,6 +17,7 @@
 
     <table>
         <tr>
+            <th>ID</th>
             <th>Nazwa</th>
             <th>Cena</th>
             <th>Ilość</th>
@@ -24,9 +25,9 @@
         </tr>
         <tr th:each="product : ${products}">
             <form action="#" method="post" th:action="@{/shop/}" th:object-="${productInfo}">
-                <td><input type="hidden" th:value="${product.id}" name="productId" /></td>
-                <td><input name="productName" th:value="${product.productName}"  disabled/></td>
-                <td th:text="${product.price}"></td>
+                <td><input th:value="${product.id}" name="productId"/></td>
+                <td><input th:value="${product.productName}" name="productName"/></td>
+                <td><input th:value="${product.price}" name="price"/></td>
                 <td><input name="quantity" id="quantity" type="number" th:value="*{quantity}"/></td>
                 <td><input type="submit" value="Dodaj">
                 </td>

@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("session")
 public class ProductInfo {
-    private int productId;
+    private Long productId;
     private String productName;
+    private double price;
     private int quantity;
 }
