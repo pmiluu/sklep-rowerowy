@@ -25,10 +25,10 @@
         </tr>
         <tr th:each="product : ${products}">
             <form action="#" method="post" th:action="@{/shop/}" th:object-="${productInfo}">
-                <td><input th:value="${product.id}" name="productId"/></td>
-                <td><input th:value="${product.productName}" name="productName"/></td>
-                <td><input th:value="${product.price}" name="price"/></td>
-                <td><input name="quantity" id="quantity" type="number" th:value="*{quantity}" min="0"/></td>
+                <td><input th:value="${product.id}" name="productId" readonly/></td>
+                <td><input th:value="${product.productName}" name="productName" readonly/></td>
+                <td><input th:value="${product.price}" name="price" readonly/></td>
+                <td><input name="quantity" id="quantity" type="number" th:value="${quantity}" min="0"/></td>
                 <td><input type="submit" value="Dodaj">
                 </td>
             </form>

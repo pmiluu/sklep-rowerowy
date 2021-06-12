@@ -26,6 +26,7 @@ public class OrderController {
 
     @GetMapping("/")
     public String productsList(Model model) {
+        model.addAttribute("quantity",1);
         model.addAttribute("products",productRepository.findAll());
         return "products";
     }
@@ -66,6 +67,24 @@ public class OrderController {
         model.addAttribute("products",basket);
         return "basket";
     }
+
+    @PostMapping("basket/")
+    public String basketDelete(@ModelAttribute("productInfo") ProductInfo productInfo, HttpServletRequest request) {
+        @SuppressWarnings("unchecked")
+        List<ProductInfo> basket = (List<ProductInfo>) request.getSession().getAttribute("BASKET");
+        if(basket ==null){
+            basket = new ArrayList<>();
+            request.getSession().setAttribute("BASKET", basket);
+        }
+        System.out.println(productInfo.getProductId());
+        Optional<ProductInfo> p = basket.stream().filter(productInfo1 -> productInfo1.getProductId().equals(productInfo.getProductId())).findAny();
+        System.out.println(p);
+        basket.remove(p.get());
+        request.getSession().setAttribute("BASKET", basket);
+        return "redirect:/shop/basket/";
+    }
+
+
 
     @PostMapping("/destroy")
     public String destroySession(HttpServletRequest request) {

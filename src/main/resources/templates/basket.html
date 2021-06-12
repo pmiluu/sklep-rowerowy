@@ -22,10 +22,13 @@
         <th>Ilość</th>
     </tr>
     <tr th:each="product : ${products}">
-            <td th:text="${product.productId}"></td>
+        <form action="#" method="post" th:action="@{/shop/basket/}" th:object-="${productInfo}">
+            <td><input th:value="${product.productId}" name="productId" readonly/></td>
             <td th:text="${product.productName}"></td>
             <td th:text="${product.price}"></td>
             <td th:text="${product.quantity}"></td>
+            <td><input type="submit" value="Usuń">
+        </form>
     </tr>
 </table>
 </body>
