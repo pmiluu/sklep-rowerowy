@@ -28,6 +28,10 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "employeeType", discriminatorType = DiscriminatorType.STRING)
 public class Person implements UserDetails {
+    public Person(String username){
+        this.username = username;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

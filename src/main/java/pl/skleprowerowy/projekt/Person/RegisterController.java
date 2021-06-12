@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/register")
-public class PersonController {
+public class RegisterController {
     private PersonRepository personRepository;
     private PasswordEncoder passwordEncoder;
 
-    public PersonController(
+    public RegisterController(
             PersonRepository personRepository, PasswordEncoder passwordEncoder){
         this.personRepository = personRepository;
         this.passwordEncoder = passwordEncoder;
