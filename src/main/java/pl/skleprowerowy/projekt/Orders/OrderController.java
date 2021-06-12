@@ -13,6 +13,7 @@ import pl.skleprowerowy.projekt.Product.ProductRepository;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,7 +39,18 @@ public class OrderController {
             basket = new ArrayList<>();
             request.getSession().setAttribute("BASKET", basket);
         }
-        basket.add(productInfo);
+
+        boolean flag = basket.stream().anyMatch(productInfo1 -> productInfo1.getProductId().equals(productInfo.getProductId()));
+
+        if(flag){
+            Optional<ProductInfo> p = basket.stream().filter(productInfo1 -> productInfo1.getProductId().equals(productInfo.getProductId())).findAny();
+            p.get().setQuantity(p.get().getQuantity()+productInfo.getQuantity());
+        }else{
+            basket.add(productInfo);
+        }
+
+
+
         request.getSession().setAttribute("BASKET", basket);
         return "redirect:/shop/basket/";
     }
