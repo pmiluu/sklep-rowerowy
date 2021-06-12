@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sklep rowerowy</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet"  href="/css/style.css">
+</head>
+<body>
+<div class="topnav">
+    <a th:href="@{/}">Strona główna</a>
+    <a th:href="@{/shop/}">Sklep</a>
+    <a href="">Nowości</a>
+    <a href="">Kontakt</a>
+    <a class="active" th:href="@{/shop/basket/}">Koszyk</a>
+
+</div>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nazwa</th>
+        <th>Ilość</th>
+    </tr>
+    <tr th:each="product : ${products}">
+            <td th:text="${product.productId}"></td>
+            <td th:field="${product.productName}"></td>
+            <td th:text="${product.quantity}"></td>
+    </tr>
+</table>
+</body>
+</html>
