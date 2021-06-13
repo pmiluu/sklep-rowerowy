@@ -29,4 +29,8 @@ public class Seller extends Person {
     @JsonManagedReference
     private Set<Orders> orders = new HashSet<Orders>();
 
+    @Override
+    public Double getSalary() {
+        return super.getSalary()+bonus;
+    }
 }

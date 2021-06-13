@@ -9,6 +9,7 @@ import pl.skleprowerowy.projekt.ProductOrder.ProductOrder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,7 +28,7 @@ public class Product {
     @JsonManagedReference
     private Set<ProductOrder> productOrders = new HashSet<ProductOrder>();
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonManagedReference
     private Set<Opinion> opinions = new HashSet<Opinion>();
 
@@ -39,5 +40,13 @@ public class Product {
 
     @NotNull
     private static double vatRate = 1.23;
+
+    public void addOpinion(String opinion){
+        Opinion o = new Opinion();
+        o.setOpinion(opinion);
+        o.setProduct(this);
+        o.setOpinionDate(LocalDate.now());
+        opinions.add(o);
+    }
 
 }

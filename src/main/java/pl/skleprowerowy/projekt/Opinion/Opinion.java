@@ -31,5 +31,4 @@ public class Opinion {
     @NotNull
     private LocalDate opinionDate;
 
-
 }
