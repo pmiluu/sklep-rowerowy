@@ -62,8 +62,10 @@ public class Person implements UserDetails {
     @NotNull
     private String username;
 
+    @NotNull
     private String password;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private PersonType personType = PersonType.Person;
 

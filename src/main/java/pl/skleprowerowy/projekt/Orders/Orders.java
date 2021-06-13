@@ -43,6 +43,7 @@ public class Orders {
     @NotNull
     private LocalDate orderDate;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus = OrderStatus.NEW;
 

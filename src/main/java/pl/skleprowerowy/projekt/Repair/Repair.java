@@ -41,6 +41,7 @@ public class Repair {
     @NotNull
     private double cost;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private RepairStatus status = RepairStatus.NEW;
 

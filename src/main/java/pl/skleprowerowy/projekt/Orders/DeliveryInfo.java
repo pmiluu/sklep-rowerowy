@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class DeliveryInfo {
     private String zipCode;
     private String street;
-    private int homeNumber;
     private int houseNumber;
+    private int apartmentNumber;
     private String City;
 }
 
