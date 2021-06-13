@@ -38,15 +38,15 @@
             <br>
         <form action="#" method="post" th:action="@{/shop/basket/order}" th:object-="${deliveryInfo}">
             <label for="zipCode">Kod pocztowy:</label>
-            <input name="zipCode" id="zipCode" type="text" th:value="*{zipCode}"/><br>
+            <input name="zipCode" id="zipCode" type="text" th:value="*{zipCode}" required="required"/><br>
             <label for="street">Ulica:</label>
-            <input name="street" id="street" type="text" th:value="*{street}"/><br>
+            <input name="street" id="street" type="text" th:value="*{street}" required="required"/><br>
             <label for="homeNumber">Nr. Domu:</label>
-            <input name="homeNumber" id="homeNumber" type="number" th:value="*{homeNumber}" min="1"/><br>
+            <input name="homeNumber" id="homeNumber" type="number" th:value="*{homeNumber}" min="1" required="required"/><br>
             <label for="houseNumber">Nr. Mieszkania:</label>
-            <input name="houseNumber" id="houseNumber" type="number" th:value="*{houseNumber}" min="1"/><br>
+            <input name="houseNumber" id="houseNumber" type="number" th:value="*{houseNumber}" min="1" required="required"/><br>
             <label for="city">Miejscowość:</label>
-            <input name="city" id="city" type="text" th:value="*{city}"/><br>
+            <input name="city" id="city" type="text" th:value="*{city}" required="required"/><br>
 
             <td><input type="submit" value="Zamów">
         </form>
