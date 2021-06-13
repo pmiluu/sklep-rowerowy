@@ -1,6 +1,5 @@
 package pl.skleprowerowy.projekt.Person;
 
-import ch.qos.logback.core.net.server.Client;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.crypto.password.PasswordEncoder;

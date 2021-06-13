@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sklep rowerowy</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet"  href="/css/style.css">
+</head>
+<body>
+<div class="topnav">
+    <a class="active" th:href="@{/}">Strona główna</a>
+    <a th:href="@{/shop/}">Sklep</a>
+    <a href="">Nowości</a>
+    <a href="">Kontakt</a>
+    <a th:href="@{/shop/basket/}">Koszyk</a>
+
+
+</div>
+<h1 th:text="${person.username}"></h1>
+
+<label for="imie">Imie: </label>
+<input th:value="${person.firstName}" name="imie" id="imie" readonly="readonly"/><br/>
+<label for="nazwisko">Nazwisko: </label>
+<input th:value="${person.lastName}" name="nazwisko" id="nazwisko" readonly="readonly"/><br/>
+<label for="phoneNumber">Numer telefonu: </label>
+<input th:value="${person.phoneNumber}" name="phoneNumber" id="phoneNumber" readonly="readonly"/><br/>
+<label for="birthDate">Data urodzenia: </label>
+<input th:value="${person.birthDate}" name="birthDate" id="birthDate" readonly="readonly"/><br/>
+<label for="email">Email: </label>
+<input th:value="${person.email}" name="email" id="email" readonly="readonly"/><br/>
+
+</body>
+</html>
