@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import pl.skleprowerowy.projekt.Person.PersonDetailsService;
 
+import javax.servlet.http.Cookie;
 import javax.sql.DataSource;
 
 @Configuration
@@ -23,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     UserDetailsService userDetailsService;
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 
@@ -31,13 +32,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
     }
+
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
+    protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/shop/").hasRole("USER")
                 .antMatchers("/shop/basket/").hasRole("USER")
                 .antMatchers("/").permitAll()
-                .and().formLogin();
+                .and()
+                    .formLogin()
+                    .loginPage("/login");
+
     }
 
 }
