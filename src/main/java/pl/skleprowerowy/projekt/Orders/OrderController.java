@@ -76,9 +76,7 @@ public class OrderController {
             basket = new ArrayList<>();
             request.getSession().setAttribute("BASKET", basket);
         }
-        System.out.println(productInfo.getProductId());
         Optional<ProductInfo> p = basket.stream().filter(productInfo1 -> productInfo1.getProductId().equals(productInfo.getProductId())).findAny();
-        System.out.println(p);
         basket.remove(p.get());
         request.getSession().setAttribute("BASKET", basket);
         return "redirect:/shop/basket/";
