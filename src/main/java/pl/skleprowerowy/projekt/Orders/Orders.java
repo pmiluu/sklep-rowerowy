@@ -43,11 +43,15 @@ public class Orders {
     @NotNull
     private LocalDate orderDate;
 
+    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus = OrderStatus.NEW;
 
-    //todo
     public double getOrderPrice(){
-        return 0;
+        double sum = 0;
+        for (ProductOrder p: productOrders) {
+            sum += p.getProduct().getPrice()*p.getQuantity();
+        }
+        return sum;
     }
 
 

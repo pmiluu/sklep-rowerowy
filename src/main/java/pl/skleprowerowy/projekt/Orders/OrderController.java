@@ -69,12 +69,16 @@ public class OrderController {
     @GetMapping("basket/")
     public String basket(HttpSession session, Model model) {
         List<ProductInfo> basket = (List<ProductInfo>) session.getAttribute("BASKET");
-
+        double price = 0;
         if(basket == null){
             basket = new ArrayList<>();
         }
+        for (ProductInfo p: basket) {
+            price += p.getPrice()*p.getQuantity();
+        }
 
         model.addAttribute("products",basket);
+        model.addAttribute("price",price);
         return "basket";
     }
 

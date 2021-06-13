@@ -1,6 +1,5 @@
 package pl.skleprowerowy.projekt.Person;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -65,6 +64,7 @@ public class Person implements UserDetails {
 
     private String password;
 
+    @Enumerated(EnumType.STRING)
     private PersonType personType = PersonType.Person;
 
     private String email;
