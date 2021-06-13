@@ -55,7 +55,6 @@ public class Person implements UserDetails {
     @NotNull
     private String lastName;
 
-    @NotNull
     private String phoneNumber;
 
     @NotNull

@@ -1,6 +1,7 @@
 package pl.skleprowerowy.projekt.Person;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
@@ -9,15 +10,18 @@ import java.time.LocalDate;
 public class RegistrationForm {
     private String username;
     private String password;
+    private String firstName;
+    private String lastName;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthDate;
 
     public Person toPerson(PasswordEncoder passwordEncoder){
         Person p = new Person();
         p.setUsername(username);
         p.setPassword(password);
-        p.setFirstName("piotr");
-        p.setLastName("m");
-        p.setPhoneNumber("12313123");
-        p.setBirthDate(LocalDate.now());
+        p.setFirstName(firstName);
+        p.setLastName(lastName);
+        p.setBirthDate(birthDate);
         return p;
     }
 }

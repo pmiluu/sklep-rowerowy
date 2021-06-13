@@ -18,10 +18,18 @@
 <h1>Rejestracja</h1>
 <form method="POST" th:action="@{/register}" id="registerForm">
     <label for="username">Nazwa użytkownika: </label>
-    <input type="text" name="username" id="username" /><br/>
+    <input type="text" name="username" id="username" required="required"/><br/>
     <label for="password">Hasło: </label>
-    <input type="password" name="password" id="password" /><br/>
+    <input type="password" name="password" id="password" required="required"/><br/>
+    <label for="firstName">Imię: </label>
+    <input type="text" name="firstName" id="firstName" required="required"/><br/>
+    <label for="lastName">Nazwisko: </label>
+    <input type="text" name="lastName" id="lastName" required="required"/><br/>
+    <label for="birthDate">Data urodzenia: </label>
+    <input type="date" name="birthDate" id="birthDate" required="required"/><br/>
+
     <input type="submit" value="Zarejestruj sie"/>
+
 </form>
 </body>
 </html>
