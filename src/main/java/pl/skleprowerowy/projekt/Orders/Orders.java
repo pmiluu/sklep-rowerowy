@@ -30,7 +30,7 @@ public class Orders {
     @JsonBackReference
     private Person person;
 
-    @NotNull
+
     @ManyToOne
     @JoinColumn(name = "seller_id")
     @JsonBackReference
