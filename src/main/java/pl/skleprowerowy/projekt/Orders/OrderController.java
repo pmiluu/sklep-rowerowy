@@ -125,11 +125,14 @@ public class OrderController {
         }
         productOrderRepository.saveAll(productOrderList);
 
+        request.getSession().removeAttribute("BASKET");
 
-
-
-
-        return "redirect:/shop/basket/";
+        return "redirect:/shop/";
+    }
+    @PostMapping("basket/cancel")
+    public String basketCancel(HttpServletRequest request) {
+        request.getSession().removeAttribute("BASKET");
+        return "redirect:/shop/";
     }
 
 
