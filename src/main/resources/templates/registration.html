@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Sklep rowerowy</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet"  href="/css/style.css">
 </head>
 <body>
+<div class="topnav">
+    <a class="active" th:href="@{/}">Strona główna</a>
+    <a th:href="@{/shop/}">Sklep</a>
+    <a href="">Nowości</a>
+    <a href="">Kontakt</a>
+    <a th:href="@{/shop/basket/}">Koszyk</a>
+    <a class="register" th:href="@{/register}">Rejestracja</a>
+    <a class="logout" th:href="@{/logout}">Wyloguj się</a>
+</div>
 <h1>Rejestrowanie</h1>
 <form method="POST" th:action="@{/register}" id="registerForm">
-    <!-- end::thAction[] -->
     <label for="username">Nazwa użytkownika: </label>
     <input type="text" name="username" id="username" /><br/>
     <label for="password">Hasło: </label>
